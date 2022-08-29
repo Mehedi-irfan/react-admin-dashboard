@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-   content: [
+  content: [
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   darkMode: 'class',
@@ -43,7 +43,7 @@ module.exports = {
       },
       backgroundImage: {
         'hero-pattern':
-          "url('https://i.ibb.co/MkvLDfb/Rectangle-4389.png')",
+          "url('https://cdn.pixabay.com/photo/2017/07/15/09/42/call-center-2505957__340.jpg')",
       },
     },
   },

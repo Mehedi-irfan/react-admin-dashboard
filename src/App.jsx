@@ -21,9 +21,10 @@ import Financial from './Pages/Charts/Financial'
 import ColorMapping from './Pages/Charts/ColorMapping'
 import Pyramind from './Pages/Charts/Pyramid'
 import Stacked from './Pages/Charts/Stacked'
+import { useStateContext } from './Context/ContextProvider'
 
 function App() {
-  const activeMenu = false;
+  const { activeMenu } = useStateContext();
   return (
     <div>
       <BrowserRouter>
@@ -52,35 +53,36 @@ function App() {
             <div className='fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full'>
               <Navbar />
             </div>
-          </div>
-          <div>
-            <Routes>
-              {/* dashborad  */}
-              <Route path='/' element={<ECommerce />} />
-              <Route path='/ecommerce' element={<ECommerce />} />
 
-              {/* pages  */}
-              <Route path='/orders' element={<Orders />} />
-              <Route path='/employees' element={<Empolyees />} />
-              <Route path='/customers' element={<Customars />} />
+            <div>
+              <Routes>
+                {/* dashborad  */}
+                <Route path='/' element={<ECommerce />} />
+                <Route path='/ecommerce' element={<ECommerce />} />
 
-              {/* Apps  */}
-              <Route path='/kanban' element={<Kanban />} />
-              <Route path='/editor' element={<Editor />} />
-              <Route path='/calender' element={<Calender />} />
-              <Route path='/color-picker' element={<ColorPicker />} />
+                {/* pages  */}
+                <Route path='/orders' element={<Orders />} />
+                <Route path='/employees' element={<Empolyees />} />
+                <Route path='/customers' element={<Customars />} />
 
-              {/* chats  */}
-              <Route path='/line' element={<Line />} />
-              <Route path='/area' element={<Area />} />
-              <Route path='/bar' element={<Bar />} />
-              <Route path='/pie' element={<Pie />} />
-              <Route path='/financial' element={<Financial />} />
-              <Route path='/color-mapping' element={<ColorMapping />} />
-              <Route path='/pyramid' element={<Pyramind />} />
-              <Route path='/stacked' element={<Stacked />} />
+                {/* Apps  */}
+                <Route path='/kanban' element={<Kanban />} />
+                <Route path='/editor' element={<Editor />} />
+                <Route path='/calender' element={<Calender />} />
+                <Route path='/color-picker' element={<ColorPicker />} />
 
-            </Routes>
+                {/* chats  */}
+                <Route path='/line' element={<Line />} />
+                <Route path='/area' element={<Area />} />
+                <Route path='/bar' element={<Bar />} />
+                <Route path='/pie' element={<Pie />} />
+                <Route path='/financial' element={<Financial />} />
+                <Route path='/color-mapping' element={<ColorMapping />} />
+                <Route path='/pyramid' element={<Pyramind />} />
+                <Route path='/stacked' element={<Stacked />} />
+
+              </Routes>
+            </div>
           </div>
         </div>
       </BrowserRouter>
