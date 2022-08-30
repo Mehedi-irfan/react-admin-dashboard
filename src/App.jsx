@@ -22,16 +22,19 @@ import ColorMapping from './Pages/Charts/ColorMapping'
 import Pyramind from './Pages/Charts/Pyramid'
 import Stacked from './Pages/Charts/Stacked'
 import { useStateContext } from './Context/ContextProvider'
+import ThemeSetting from './Components/ThemeSetting';
 
 function App() {
-  const { activeMenu } = useStateContext();
+  const { activeMenu, themeSettings, setThemeSettings, currentColor, currentMode } = useStateContext();
   return (
-    <div>
+    <div className={currentMode === 'Dark' ? 'dark' : ''}>
       <BrowserRouter>
         <div className='flex relative dark:bg-main-dark-bg'>
           <div className='fixed right-4 bottom-4' style={{ zIndex: '1000' }}>
             <TooltipComponent content='Setting' position='top'>
-              <button type='button' className='text-3xl p-3 hover:drop-shadow-xl hover:bg-light-gray text-white' style={{ background: "blue", borderRadius: '50%' }}>
+              <button
+                onClick={() => setThemeSettings(true)}
+                type='button' className='text-3xl p-3 hover:drop-shadow-xl hover:bg-light-gray text-white' style={{ background: currentColor, borderRadius: '50%' }}>
                 <FiSettings />
               </button>
             </TooltipComponent>
@@ -48,13 +51,14 @@ function App() {
             )
           }
           <div className={
-            activeMenu ? 'dark:bg-main-bg bg-main-bg min-h-screen md:ml-72 w-full' : 'dark:bg-main-bg bg-main-bg min-h-screen w-full flex-2'
+            activeMenu ? 'dark:bg-main-dark-bg bg-main-bg min-h-screen md:ml-72 w-full' : 'dark:bg-main-bg bg-main-bg min-h-screen w-full flex-2'
           }>
             <div className='fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full'>
               <Navbar />
             </div>
 
             <div>
+              {themeSettings && <ThemeSetting />}
               <Routes>
                 {/* dashborad  */}
                 <Route path='/' element={<ECommerce />} />
@@ -68,7 +72,7 @@ function App() {
                 {/* Apps  */}
                 <Route path='/kanban' element={<Kanban />} />
                 <Route path='/editor' element={<Editor />} />
-                <Route path='/calender' element={<Calender />} />
+                <Route path='/calendar' element={<Calender />} />
                 <Route path='/color-picker' element={<ColorPicker />} />
 
                 {/* chats  */}
